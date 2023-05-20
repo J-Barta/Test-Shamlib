@@ -1,0 +1,39 @@
+plugins {
+    id 'java'
+    id 'maven-publish'
+    id "edu.wpi.first.GradleRIO" version "2023.4.3"
+}
+
+// Defining my dependencies. In this case, WPILib (+ friends), and vendor libraries.
+// Also defines JUnit 4.
+dependencies {
+    implementation wpi.java.deps.wpilib()
+    implementation wpi.java.vendor.java()
+
+    testImplementation 'junit:junit:4.12'
+}
+
+publishing {
+    publications {
+        create("maven", MavenPublication) {
+            from(components["java"])
+            artifact(sourcesJar)
+        }
+    }
+}
+
+// Simulation configuration (e.g. environment variables).
+wpi.sim.addGui().defaultEnabled = true
+wpi.sim.addDriverstation()
+
+wpi.java.configureExecutableTasks(jar)
+wpi.java.configureTestTasks(test)
+
+compileJava {
+    options.compilerArgs << '-parameters'
+}
+
+compileTestJava {
+    options.compilerArgs << '-parameters'
+}
+
