@@ -2,6 +2,8 @@ wrapper {
     gradleVersion = '7.0'
 }
 
+//./gradlew refreshVersionsMigrate
+
 subprojects {
     apply plugin: 'java'
     apply plugin: 'maven-publish'

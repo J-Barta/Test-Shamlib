@@ -27,7 +27,6 @@ public abstract class TransitionBase<E extends Enum<E>> {
 
     /**
      * Run (or start) the transition, then return a BooleanSupplier indicating whether it is finished
-     * @return whether the transition is finished
      */
     public abstract void execute();
 
