@@ -1,16 +1,47 @@
 plugins {
     id 'java'
     id 'maven-publish'
-    id "edu.wpi.first.GradleRIO" version "2023.4.3"
+    id "edu.wpi.first.GradleRIO"
+
 }
 
 // Defining my dependencies. In this case, WPILib (+ friends), and vendor libraries.
 // Also defines JUnit 4.
+
+repositories {
+    maven {url "https://3015rangerrobotics.github.io/pathplannerlib/repo"}
+
+    maven {url "https://maven.ctr-electronics.com/release/"}
+}
+
+//To update
 dependencies {
     implementation wpi.java.deps.wpilib()
     implementation wpi.java.vendor.java()
 
-    testImplementation 'junit:junit:4.12'
+    testImplementation Testing.junit4
+
+    implementation 'edu.wpi.first.wpilibNewCommands:wpilibNewCommands-java:_'
+    implementation 'com.pathplanner.lib:PathplannerLib-java:_'
+    implementation Testing.junit.jupiter
+
+    implementation 'com.ctre.phoenix:api-java:_'
+    implementation 'com.ctre.phoenix:wpiapi-java:_'
+    implementation 'com.ctre.phoenixpro:wpiapi-java:_'
+
+    implementation 'com.ctre.phoenix:cci:5.30.4'
+    implementation 'com.ctre.phoenix.sim:cci-sim:5.30.4'
+    implementation 'com.ctre.phoenixpro:tools:23.0.11'
+    implementation 'com.ctre.phoenixpro.sim:tools-sim:23.0.11'
+    implementation 'com.ctre.phoenixpro.sim:simTalonSRX:23.0.11'
+    implementation 'com.ctre.phoenixpro.sim:simTalonFX:23.0.11'
+    implementation 'com.ctre.phoenixpro.sim:simVictorSPX:23.0.11'
+    implementation 'com.ctre.phoenixpro.sim:simPigeonIMU:23.0.11'
+    implementation 'com.ctre.phoenixpro.sim:simCANCoder:23.0.11'
+    implementation 'com.ctre.phoenixpro.sim:simProTalonFX:23.0.11'
+    implementation 'com.ctre.phoenixpro.sim:simProCANcoder:23.0.11'
+    implementation 'com.ctre.phoenixpro.sim:simProPigeon2:23.0.11'
+
 }
 
 publishing {
